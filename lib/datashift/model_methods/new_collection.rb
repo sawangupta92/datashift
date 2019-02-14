@@ -14,7 +14,7 @@ module DataShift
 
   module ModelMethods
 
-    class Collection
+    class NewCollection
 
       # include DataShift::Logging
       include Enumerable
@@ -47,7 +47,7 @@ module DataShift
       alias klass managed_class_name
 
       def insert(operator, type)
-        mm = ::DataShift::ModelMethod.new(managed_class, operator, type)
+        mm = ModelMethod.new(managed_class, operator, type)
         add( mm )
         mm
       end
@@ -84,7 +84,7 @@ module DataShift
 
       # Search for  matching ModelMethod for given name across all types in supported_types_enum order
       def search(name)
-        ::DataShift::ModelMethod.supported_types_enum.each do |type|
+        ModelMethod.supported_types_enum.each do |type|
           model_method = find_by_name_and_type(name, type)
           return model_method if model_method
         end
@@ -101,7 +101,7 @@ module DataShift
 
       # Search for  matching ModelMethod for given name across Association types
       def find_association(name)
-        ::DataShift::ModelMethod.association_types_enum.each do |type|
+        ModelMethod.association_types_enum.each do |type|
           model_method = find_by_name_and_type(name, type)
           return model_method if model_method
         end

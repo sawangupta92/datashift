@@ -42,7 +42,7 @@ module DataShift
 
         ModelMethods::Catalogue.populate(klass, options) unless ModelMethods::Catalogue.catalogued?(klass)
 
-        collection = ModelMethods::Collection.new( klass )
+        collection = ModelMethods::Collection.new(klass)
 
         DataShift::ModelMethods::Catalogue.assignments_for(klass).each do |n|
           collection << ModelMethod.new(klass, n, :assignment)
