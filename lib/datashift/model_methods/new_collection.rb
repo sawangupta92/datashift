@@ -32,7 +32,7 @@ module DataShift
 
       extend Forwardable
 
-      def_delegators :@model_method_list, [], :sort, :sort!, :first, :last
+      def_delegators :@model_method_list, :sort, :sort!, :first, :last
 
       def initialize( klass )
         @managed_class = klass
